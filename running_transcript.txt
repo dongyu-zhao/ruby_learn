@@ -1,0 +1,24 @@
+"First element of popularity list"
+1189
+"Last 10 element of popularity list"
+1546
+1366
+1564
+1574
+1671
+1325
+1341
+1352
+1626
+1659
+"10 most similar users with user_id 1"
+916
+864
+268
+92
+457
+435
+738
+429
+303
+276

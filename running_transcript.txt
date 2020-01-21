@@ -1,6 +1,6 @@
-"First element of popularity list"
+"First movie id of popularity list"
 1189
-"Last 10 element of popularity list"
+"Last 10 movie ids of popularity list"
 1546
 1366
 1564
@@ -11,7 +11,7 @@
 1352
 1626
 1659
-"10 most similar users with user_id 1"
+"10 most similar users'id with user_id 1"
 916
 864
 268

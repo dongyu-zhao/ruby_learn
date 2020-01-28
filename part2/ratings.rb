@@ -73,15 +73,20 @@ class Ratings
   def compute_most_similar_users
     matrix = compute_similarity_matrix
     users = {}
-    @user_ids.each_with_index { |id, ix| users[id] = @user_ids.select { |id2| id2 != id }.map.with_index { |id2, ix2| [id2, matrix[ix][ix2]] }.sort_by { |item| -item[1] }.first(50).to_h }
+    @user_ids.each_with_index { |id, ix| users[id] = @user_ids.select { |id2| id2 != id }.map.with_index { |id2, ix2| [id2, matrix[ix][ix2]] }.sort_by { |item| -item[1] }.to_h }
     users
   end
 
   def predict(user, movie)
-     if @users.nil?
+    if @users.nil?
       @users = compute_most_similar_users
     end
     similarity = @data.select { |item| @users[user].key?(item[0]) && movie == item[1] }.map {|item| [item[2], @users[user][item[0]]] }
-    (similarity.reduce(0) { |sum, item| sum + item[0] * item[1] }  / similarity.reduce(0) { |sum, item| sum + item[1] }).round()
+    sum = similarity.reduce(0) { |sum, item| sum += item[1] }
+    if sum == 0
+	return 0
+    else
+	return (similarity.reduce(0) { |sum, item| sum + item[0] * item[1] }  / sum).round()
+    end  
   end
 end

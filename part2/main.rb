@@ -1,2 +1,2 @@
 require_relative 'control'
-Control.new().run("train.txt", "test.txt")
+Control.new().run("u1.base", "u1.test")
